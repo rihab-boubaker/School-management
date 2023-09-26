@@ -1,0 +1,31 @@
+<div class="container">
+    <table class="table mt-5">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Course</th>
+                <th scope="col">Note</th>
+                <th scope="col">Evaluation</th>
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let m of notesTab">
+                <th scope="row">{{m._id}}</th>
+                <td>{{m.student.firstName}}</td>
+                <td>{{m.student.lastName}}</td>
+                <td>{{m.course.courseName }}</td>
+                <td>{{m.note}}</td>
+                <td>{{m.evaluation}}</td>
+
+
+
+            </tr>
+
+        </tbody>
+    </table>
+</div>

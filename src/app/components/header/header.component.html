@@ -1,0 +1,45 @@
+<div class="container-fluid bg-light position-relative shadow">
+    <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5">
+        <a href="" class="navbar-brand font-weight-bold text-secondary" style="font-size: 50px;">
+            <i class="flaticon-043-teddy-bear"></i>
+            <span class="text-primary">KidKinder</span>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="navbar-nav font-weight-bold mx-auto py-0">
+                <a routerLink="" class="nav-item nav-link active">Home</a>
+                <a  *ngIf="isLoggedIn() && user.role=='admin'" routerLink="adminDashboard" class="nav-item nav-link">teachers list</a>
+                <a  *ngIf="isLoggedIn() && user.role=='admin'" routerLink="studentsList" class="nav-item nav-link">Students list</a>
+                <a  *ngIf="isLoggedIn() && user.role=='admin'" routerLink="parentsList" class="nav-item nav-link">Parents list</a>
+                <a  *ngIf="isLoggedIn() && user.role=='admin'" routerLink="coursesList" class="nav-item nav-link">all courses</a>
+                <a  *ngIf="isLoggedIn() && user.role=='admin'" routerLink="assignDtudentToCourse" class="nav-item nav-link">Assignment</a>
+                <a  *ngIf="isLoggedIn() && user.role=='admin'" routerLink="searchTeacher" class="nav-item nav-link">Search Teacher</a>
+
+                <a  *ngIf="isLoggedIn() && user.role=='teacher'" routerLink="teacherDashboard" class="nav-item nav-link">add course</a>
+                <a  *ngIf="isLoggedIn() && user.role=='teacher'" routerLink="teacherCourses" class="nav-item nav-link">teacher courses</a>
+               
+                <a  *ngIf="isLoggedIn() && user.role=='parent'" routerLink="searchCourse" class="nav-item nav-link">search course</a>
+
+
+           
+
+               
+            </div>
+            <div *ngIf="!isLoggedIn()" class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle btn btn-primary py-2 mt-2 mx-2"
+                    data-toggle="dropdown">Signup</a>
+                <div class="dropdown-menu rounded-0 m-0">
+                    <a routerLink="signupStudent" class="dropdown-item">Sign up Student</a>
+                    <a routerLink="signupParent" class="dropdown-item">Sign up Parent</a>
+                    <a routerLink="signupTeacher" class="dropdown-item">Sign up Teacher</a>
+                    <a routerLink="signupAdmin" class="dropdown-item">Sign up Admin</a>
+                </div>
+            </div>
+            <a *ngIf="!isLoggedIn()" routerLink="login" class="btn btn-primary px-4 py-2 mt-1">Login</a>
+            <a *ngIf="isLoggedIn()" routerLink="login" class="btn btn-primary px-4 py-2 mt-1" (click)="logout()">Logout</a>
+          
+        </div>
+    </nav>
+</div>

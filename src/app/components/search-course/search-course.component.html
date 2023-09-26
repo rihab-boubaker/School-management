@@ -1,0 +1,79 @@
+<div class="container-fluid pt-5">
+    <div class="container">
+        <div class="text-center pb-2">
+            <p class="section-title px-5"><span class="px-2">Search</span></p>
+            <h1 class="mb-4">Search Courses</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-7 mb-5 "> 
+                <div class="contact-form text-center">
+
+                    <form [formGroup]="searchCourseForm">
+                        <div class="form-group">
+                            <input type="text" formControlName="childNumber" class="form-control border-4 py-4"
+                                placeholder="childNumber" />
+                        </div>
+                        <div *ngIf="
+                        searchCourseForm.controls['childNumber'].invalid &&
+                        (searchCourseForm.controls['childNumber'].touched ||
+                        searchCourseForm.controls['childNumber'].dirty)">
+                            <div *ngIf="searchCourseForm.controls['childNumber'].errors.required">childNumber is required</div>
+
+                        </div>
+
+
+
+                        <span style="color: red;">{{errorMsg}}</span>
+                        <div class="mt-3">
+                            <button class="btn btn-primary py-2 px-4" type="submit" (click)="searchCourse()">Login</button>
+                        </div>
+
+                    </form>
+                    <div *ngIf="courses">
+                        <h2>Search Results:</h2>
+                       
+                            <div class="container">
+                                <table class="table mt-5">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">id</th>
+                                            <th scope="col">Course Name</th>
+                                            <th scope="col">Course Duration ( heure)</th>
+                                            <th scope="col">Course Description</th>
+                                            <th scope="col">Teacher</th>
+                                            <th scope="col">Action</th>
+                                           
+                                          
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let m of courses">
+                                            <th scope="row">{{m._id}}</th>
+                                            <td>{{m.courseName}}</td>
+                                            <td>{{m.courseDuration}}</td>
+                                            <td>{{m.courseDescription}}</td>
+                                            <td>{{ m.teacher.firstName }} {{ m.teacher.lastName }}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-success"  (click)="displayNote(m._id,studentId)">Display Note</button>
+                                               
+                                                 
+                                            </td>
+                                           
+                                            
+                                           
+                                             
+                                        </tr>
+                            
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <!-- Display other course information here -->
+                    
+                      </div>
+            </div>
+
+        </div>
+    </div>
+</div>

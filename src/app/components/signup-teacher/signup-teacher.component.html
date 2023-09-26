@@ -1,0 +1,118 @@
+<div class="container-fluid pt-5">
+    <div class="container">
+        <div class="text-center pb-2">
+            <p class="section-title px-5"><span class="px-2">Signup Teacher</span></p>
+            <h1 class="mb-4">Signup</h1>  
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-7 mb-5 ">
+                <div class="contact-form text-center">
+
+                    <form [formGroup]="signupForm">
+                        <div class="form-group">
+                            <input type="text" formControlName="firstName" class="form-control border-4 py-4"
+                                placeholder="Your first Name" />
+                        </div>
+                        <div *ngIf="
+                        signupForm.controls['firstName'].invalid &&
+                        (signupForm.controls['firstName'].touched ||
+                        signupForm.controls['firstName'].dirty)">
+                            <div *ngIf="signupForm.controls['firstName'].errors.required">first name is required</div>
+                            <div *ngIf="signupForm.controls['firstName'].errors.minlength">first name must have at least
+                                3 chars</div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" formControlName="lastName" class="form-control border-4 py-4"
+                                placeholder="Your last name" />
+                        </div>
+                        <div *ngIf="
+                        signupForm.controls['lastName'].invalid &&
+                        (signupForm.controls['lastName'].touched ||
+                        signupForm.controls['lastName'].dirty)">
+                            <div *ngIf="signupForm.controls['lastName'].errors.required">first name is required</div>
+                            <div *ngIf="signupForm.controls['lastName'].errors.minlength">first name must have at least
+                                3 chars</div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" formControlName="email" class="form-control border-4 py-4"
+                                placeholder="Your Email" />
+                        </div>
+                        <span style="color: red;">{{errorMsg}}</span>
+                        <div *ngIf="
+              signupForm.controls['email'].invalid &&
+              (signupForm.controls['email'].touched ||
+              signupForm.controls['email'].dirty)">
+                            <div *ngIf="signupForm.controls['email'].errors.required">email is required</div>
+                            <div *ngIf="signupForm.controls['email'].errors.email"> format email invalid</div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" formControlName="pwd" class="form-control border-4 py-4"
+                                placeholder="Your password" />
+                        </div>
+                        <div *ngIf="
+                        signupForm.controls['pwd'].invalid &&
+                        (signupForm.controls['pwd'].touched ||
+                        signupForm.controls['pwd'].dirty)">
+                            <div *ngIf="signupForm.controls['pwd'].errors.required">pwd is required</div>
+                            <div *ngIf="signupForm.controls['pwd'].errors.minlength"> pwd must have at least 6 chars
+                            </div>
+                            <div *ngIf="signupForm.controls['pwd'].errors.maxlength"> pwd must have be 12 char max</div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" formControlName="tel" class="form-control border-4 py-4"
+                                placeholder="Your tel" />
+                        </div>
+                        <div *ngIf="
+                        signupForm.controls['tel'].invalid &&
+                        (signupForm.controls['tel'].touched ||
+                        signupForm.controls['tel'].dirty)">
+                            <div *ngIf="signupForm.controls['tel'].errors.required">tel is required</div>
+
+                        </div>
+                        <div class="form-group">
+                            <input type="text" formControlName="speciality" class="form-control border-4 py-4"
+                                placeholder="Your speciality" />
+                        </div>
+                        <div *ngIf="
+                        signupForm.controls['speciality'].invalid &&
+                        (signupForm.controls['speciality'].touched ||
+                        signupForm.controls['speciality'].dirty)">
+                            <div *ngIf="signupForm.controls['speciality'].errors.required">tel is required</div>
+
+                        </div>
+                        <div class="form-group">
+                            <input type="text" formControlName="adress" class="form-control border-4 py-4"
+                                placeholder="Your adress" />
+                        </div>
+
+                        <div *ngIf="
+                        signupForm.controls['adress'].invalid &&
+                        (signupForm.controls['adress'].touched ||
+                        signupForm.controls['adress'].dirty)">
+                            <div *ngIf="signupForm.controls['adress'].errors.required">tel is required</div>
+
+                        </div>
+                        <!-- pour l upload de la photo -->
+                        <div class="form-group" style="visibility: hidden;">
+
+                            <input type="file"  class="form-control" #filePicker (change)="onFileSelected($event)">
+                        </div>
+                        <div class="text-center mb-5">
+                            <button class="btn btn-warning" (click)="filePicker.click()">select your pdf</button>
+                        </div>
+
+                        <div class="text-center">
+                            <a [href]="filePreview" target="_blank" *ngIf="filePreview">View PDF</a>  
+                        </div>
+
+                        <div class="mt-3">
+                            <button class="btn btn-primary py-2 px-4" type="submit" (click)="signup()">Signup</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

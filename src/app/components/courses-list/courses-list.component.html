@@ -1,0 +1,34 @@
+<div class="container">
+    <table class="table mt-5">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Course Name</th>
+                <th scope="col">course Duration(hour)</th>
+                <th scope="col">course Description</th>
+                <th scope="col"> Teacher Name</th>
+                
+                <th scope="col">actions</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let m of coursesTab">
+                <th scope="row">{{m._id}}</th>
+                <td>{{m.courseName}}</td>
+                <td>{{m.courseDuration}}</td>
+                <td>{{m.courseDescription}}</td>
+                <td>{{m.teacher.firstName}} {{m.teacher.lastName}}</td>
+                
+                <td>
+                    <button type="button" class="btn btn-warning" (click)="display(m._id)">show students</button>
+                   
+                    <button type="button" class="btn btn-warning" (click)="deleteCourse(m._id)">Delete</button>
+                    
+                </td>
+                 
+            </tr>
+
+        </tbody>
+    </table>
+</div>

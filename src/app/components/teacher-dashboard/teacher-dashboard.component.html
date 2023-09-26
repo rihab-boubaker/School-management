@@ -1,0 +1,79 @@
+<div class="container-fluid pt-5">
+    <div class="container">
+        <div class="text-center pb-2">
+           
+            <h1 class="mb-4">Add course</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-7 mb-5 ">
+                <div class="contact-form text-center">
+
+                    <form [formGroup]="addcourseForm">
+                        <div class="form-group">
+                            <input type="text" formControlName="courseName" class="form-control border-4 py-4"
+                                placeholder="Your course Name" />
+                        </div>
+                        <div *ngIf="
+                        addcourseForm.controls['courseName'].invalid &&
+                        (addcourseForm.controls['courseName'].touched ||
+                        addcourseForm.controls['courseName'].dirty)">
+                            <div *ngIf="addcourseForm.controls['courseName'].errors.required">course name is required
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="courseDuration">Durée du cours (en heures)</label>
+                            <input type="number" class="form-control" formControlName="courseDuration">
+                        </div>
+                        <div *ngIf="
+                        addcourseForm.controls['courseDuration'].invalid &&
+                        (addcourseForm.controls['courseDuration'].touched ||
+                        addcourseForm.controls['courseDuration'].dirty)">
+                            <div *ngIf="addcourseForm.controls['courseDuration'].errors.required">Duration is required
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="courseDescription">Description du cours</label>
+                            <textarea class="form-control" formControlName="courseDescription"></textarea>
+                        </div>
+
+                        <div *ngIf="
+              addcourseForm.controls['courseDescription'].invalid &&
+              (addcourseForm.controls['courseDescription'].touched ||
+              addcourseForm.controls['courseDescription'].dirty)">
+                            <div *ngIf="addcourseForm.controls['courseDescription'].errors.required">Description is
+                                required</div>
+
+                        </div>
+
+                        <!--  -->
+                       
+                    
+                          
+
+                        <!-- pour l upload de la photo -->
+                        <!-- <div class="form-group" style="visibility: hidden;">
+
+                            <input type="file" class="form-control" #filePicker (change)="onImageSelected($event)">
+                        </div>
+                        <div class="text-center mb-5">
+                            <button class="btn btn-warning" (click)="filePicker.click()">select photo</button>
+                        </div>
+
+                        <div class="text-center">
+                            <img [src]="imagePreview" *ngIf="imagePreview" alt="" width="200px" height="200px">
+                        </div> -->
+
+                        <div class="mt-3">
+                            <button class="btn btn-primary py-2 px-4" type="submit" (click)="addCourse()">add
+                                course</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

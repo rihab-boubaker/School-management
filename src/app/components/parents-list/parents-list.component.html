@@ -1,0 +1,34 @@
+<div class="container">
+    <table class="table mt-5">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">email</th>
+                <th scope="col">tel</th>
+    
+             
+                <th scope="col">actions</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let m of parentsTab">
+                <th scope="row">{{m._id}}</th>
+                <td>{{m.firstName}}</td>
+                <td>{{m.lastName}}</td>
+                <td>@{{m.email}}</td>
+                <td>{{m.tel}}</td>
+               
+                <td>
+                   
+                    <button type="button" class="btn btn-warning" (click)="deleteParent(m._id)">Delete</button>
+                    
+                </td>
+                 
+            </tr>
+
+        </tbody>
+    </table>
+</div>
